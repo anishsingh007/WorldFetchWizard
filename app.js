@@ -2,8 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const authRoutes = require('./routes/authRoutes');
 const countryRoutes = require('./routes/countryRoutes')
+const jwttoken = require('jsonwebtoken');
+const authenticate=require('./middleware/authMiddleware')
 const app = express();
 
+app.use(bodyParser.json());
+
+app.use('/api', authenticate);
 app.use('/api', authRoutes); 
 app.use('/api', countryRoutes); 
 
