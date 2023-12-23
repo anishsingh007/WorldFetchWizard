@@ -3,13 +3,17 @@ const bodyParser = require("body-parser");
 const authRoutes = require('./routes/authRoutes');
 const countryRoutes = require('./routes/countryRoutes')
 const jwttoken = require('jsonwebtoken');
-const authenticate=require('./middleware/authMiddleware')
+const {authenticate}=require('./middleware/authMiddleware')
 const app = express();
 
+app.use(express.json());
 app.use(bodyParser.json());
 
+app.use('/api', authRoutes);
+//Middleware
 app.use('/api', authenticate);
-app.use('/api', authRoutes); 
+//Routes
+
 app.use('/api', countryRoutes); 
 
 // Error handling for invalid routes
