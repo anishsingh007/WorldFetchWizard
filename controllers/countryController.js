@@ -42,10 +42,10 @@ exports.getCountries = async (req, res) => {
       // countries = countries.filter(country => country.languages.includes(language))
       //    console.log(countries)
       // console.log('English'===language)
-      let a = language.toString();
+      let lang = language.toString();
       countries = countries.filter(
         (country) =>
-          country.languages && Object.values(country.languages).includes(a)
+          country.languages && Object.values(country.languages).includes(lang)
       );
       // console.log(countries)
     }
